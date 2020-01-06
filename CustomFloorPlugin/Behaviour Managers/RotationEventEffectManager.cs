@@ -1,7 +1,8 @@
-﻿using CustomFloorPlugin.Util;
+using CustomFloorPlugin.Util;
 using System.Collections.Generic;
 using UnityEngine;
-using CustomUI.Utilities;
+using BS_Utils.Utilities;
+
 
 namespace CustomFloorPlugin
 {
@@ -10,7 +11,7 @@ namespace CustomFloorPlugin
         List<RotationEventEffect> effectDescriptors;
         List<LightRotationEventEffect> lightRotationEffects;
         
-        private void OnEnable()
+        internal void RegisterForEvents()
         {
             foreach (LightRotationEventEffect rotEffect in lightRotationEffects)
             {
@@ -52,6 +53,7 @@ namespace CustomFloorPlugin
             foreach (RotationEventEffect effectDescriptor in effectDescriptors)
             {
                 LightRotationEventEffect rotEvent = effectDescriptor.gameObject.AddComponent<LightRotationEventEffect>();
+                PlatformManager.SpawnedComponents.Add(rotEvent);
 
                 ReflectionUtil.SetPrivateField(rotEvent, "_event", (BeatmapEventType)effectDescriptor.eventType);
                 ReflectionUtil.SetPrivateField(rotEvent, "_rotationVector", effectDescriptor.rotationVector);

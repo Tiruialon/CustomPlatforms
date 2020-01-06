@@ -1,4 +1,5 @@
-﻿using System;
+using CustomFloorPlugin;
+using System;
 using UnityEngine;
 
 // Token: 0x0200035C RID: 860
@@ -26,38 +27,42 @@ public class SpectrogramColumns : MonoBehaviour
         
         for (int i = 0; i < processedSamples.Length; i++)
         {
-            float num = processedSamples[i] * (5f + (float)i * 0.07f);
+            float num = processedSamples[i] * (5f + i * 0.07f);
             if (num > 1f)
             {
                 num = 1f;
             }
             num = Mathf.Pow(num, 2f);
-            this._columnTransforms[i].localScale = new Vector3(this._columnWidth, Mathf.Lerp(this._minHeight, this._maxHeight, num) + (float)i * 0.1f, this._columnDepth);
-            this._columnTransforms[i + 64].localScale = new Vector3(this._columnWidth, Mathf.Lerp(this._minHeight, this._maxHeight, num), this._columnDepth);
+            _columnTransforms[i].localScale = new Vector3(_columnWidth, Mathf.Lerp(_minHeight, _maxHeight, num) + i * 0.1f, _columnDepth);
+            _columnTransforms[i + 64].localScale = new Vector3(_columnWidth, Mathf.Lerp(_minHeight, _maxHeight, num), _columnDepth);
         }
     }
     
     private void CreateColums()
     {
-        this._columnTransforms = new Transform[128];
+        _columnTransforms = new Transform[128];
         for (int i = 0; i < 64; i++)
         {
-            this._columnTransforms[i] = this.CreateColumn(this._separator * (float)i);
-            this._columnTransforms[i + 64] = this.CreateColumn(-this._separator * (float)(i + 1));
+            _columnTransforms[i] = CreateColumn(_separator * i);
+            _columnTransforms[i + 64] = CreateColumn(-_separator * (i + 1));
         }
     }
     
     private Transform CreateColumn(Vector3 pos)
     {
-        GameObject gameObject = UnityEngine.Object.Instantiate<GameObject>(this._columnPrefab, base.transform);
+        GameObject gameObject = Instantiate<GameObject>(_columnPrefab, base.transform);
+        foreach(TubeLight tubeLight in gameObject.GetComponentsInChildren<TubeLight>()) {
+            tubeLight.GameAwake();
+        }
+        PlatformManager.SpawnedObjects.Add(gameObject);
         gameObject.transform.localPosition = pos;
-        gameObject.transform.localScale = new Vector3(this._columnWidth, this._minHeight, this._columnDepth);
+        gameObject.transform.localScale = new Vector3(_columnWidth, _minHeight, _columnDepth);
         return gameObject.transform;
     }
-    
+#pragma warning disable CS0649
     [SerializeField]
     private GameObject _columnPrefab;
-    
+#pragma warning restore CS0649
     [SerializeField]
     private Vector3 _separator = new Vector3(0f, 0f, 1f);
     
@@ -72,8 +77,8 @@ public class SpectrogramColumns : MonoBehaviour
     
     [SerializeField]
     private float _columnDepth = 1f;
-    
+#pragma warning disable CS0649
     private BasicSpectrogramData _spectrogramData;
-    
+#pragma warning restore CS0649
     private Transform[] _columnTransforms;
 }
