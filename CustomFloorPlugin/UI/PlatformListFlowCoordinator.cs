@@ -32,5 +32,9 @@ namespace CustomFloorPlugin.UI {
             var mainFlow = BeatSaberUI.MainFlowCoordinator;
             mainFlow.InvokePrivateMethod("DismissFlowCoordinator", this, null, false);
         }
+        public void RefreshPlatformsList()
+        {
+            _platformsListView.RefreshPlatformsList();
+        }
     }
 }

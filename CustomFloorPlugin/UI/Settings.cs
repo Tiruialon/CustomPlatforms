@@ -8,6 +8,12 @@ namespace CustomFloorPlugin.UI {
         [UIParams]
         public BSMLParserParams parserParams;
 #pragma warning restore CS0649
+        [UIAction("refresh-platforms")]
+        private void refreshPlatforms()
+        {
+            PlatformManager.Instance.RefreshPlatforms();
+            PlatformUI._platformMenuFlowCoordinator.RefreshPlatformsList();
+        }
         [UIValue("always-show-feet")]
         public bool alwaysShowFeet {
             get {

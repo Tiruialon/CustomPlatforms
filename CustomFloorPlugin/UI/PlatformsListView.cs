@@ -34,6 +34,9 @@ namespace CustomFloorPlugin.UI {
 
         [UIAction("#post-parse")]
         internal void SetupPlatformsList() {
+            RefreshPlatformsList();
+        }
+        public void RefreshPlatformsList() {
             customListTableData.data.Clear();
             foreach(CustomPlatform platform in PlatformManager.Instance.GetPlatforms()) {
                 customListTableData.data.Add(new CustomListTableData.CustomCellInfo(platform.platName, platform.platAuthor, platform.icon.texture));
