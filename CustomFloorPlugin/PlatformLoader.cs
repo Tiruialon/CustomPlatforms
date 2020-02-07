@@ -147,10 +147,12 @@ namespace CustomFloorPlugin {
                 RotationEventEffectManager rotManager = root.GetComponent<RotationEventEffectManager>();
                 if(rotManager == null) {
                     rotManager = root.AddComponent<RotationEventEffectManager>();
+                    rotManager.CreateEffects(go);
                     rotManager.RegisterForEvents();
                     PlatformManager.SpawnedComponents.Add(rotManager);
+                } else {
+                    rotManager.CreateEffects(go);
                 }
-                rotManager.CreateEffects(go);
             }
 
             // Add a trackRing controller if there are track ring descriptors
