@@ -155,6 +155,20 @@ namespace CustomFloorPlugin {
                 }
             }
 
+            // Pair rotation effect manager
+            if(go.GetComponentInChildren<PairRotationEventEffect>(true) != null)
+            {
+                PairRotationEventEffectManager rotManager = root.GetComponent<PairRotationEventEffectManager>();
+                if (rotManager == null) {
+                    rotManager = root.AddComponent<PairRotationEventEffectManager>();
+                    rotManager.CreateEffects(go);
+                    rotManager.RegisterForEvents();
+                    PlatformManager.SpawnedComponents.Add(rotManager);
+                } else {
+                    rotManager.CreateEffects(go);
+                }
+            }
+
             // Add a trackRing controller if there are track ring descriptors
             if(go.GetComponentInChildren<TrackRings>(true) != null) {
                 foreach(TrackRings trackRings in go.GetComponentsInChildren<TrackRings>(true)) {
