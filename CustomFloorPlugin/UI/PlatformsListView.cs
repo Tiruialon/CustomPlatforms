@@ -36,6 +36,10 @@ namespace CustomFloorPlugin.UI {
         internal void SetupPlatformsList() {
             RefreshPlatformsList();
         }
+
+        /// <summary>
+        /// Updates the UI in the custom platforms menu with the currently loaded platforms.
+        /// </summary>
         public void RefreshPlatformsList() {
             customListTableData.data.Clear();
             foreach(CustomPlatform platform in PlatformManager.Instance.GetPlatforms()) {

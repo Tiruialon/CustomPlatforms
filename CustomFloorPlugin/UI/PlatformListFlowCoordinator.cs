@@ -32,6 +32,10 @@ namespace CustomFloorPlugin.UI {
             var mainFlow = BeatSaberUI.MainFlowCoordinator;
             mainFlow.InvokePrivateMethod("DismissFlowCoordinator", this, null, false);
         }
+
+        /// <summary>
+        /// Updates the UI in the custom platforms menu with the currently loaded platforms.
+        /// </summary>
         public void RefreshPlatformsList()
         {
             _platformsListView.RefreshPlatformsList();
