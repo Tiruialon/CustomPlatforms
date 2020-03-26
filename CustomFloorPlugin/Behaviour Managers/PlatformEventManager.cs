@@ -20,8 +20,8 @@ namespace CustomFloorPlugin {
             BSEvents.comboDidBreak += delegate () { _EventManager.OnComboBreak.Invoke(); };
             BSEvents.multiplierDidIncrease += delegate (int multiplier) { _EventManager.MultiplierUp.Invoke(); };
             BSEvents.comboDidChange += delegate (int combo) { _EventManager.OnComboChanged.Invoke(combo); };
-            BSEvents.sabersStartCollide += delegate (Saber.SaberType saber) { _EventManager.SaberStartColliding.Invoke(); };
-            BSEvents.sabersEndCollide += delegate (Saber.SaberType saber) { _EventManager.SaberStopColliding.Invoke(); };
+            BSEvents.sabersStartCollide += delegate (SaberType saber) { _EventManager.SaberStartColliding.Invoke(); };
+            BSEvents.sabersEndCollide += delegate (SaberType saber) { _EventManager.SaberStopColliding.Invoke(); };
             BSEvents.levelFailed += delegate (StandardLevelScenesTransitionSetupDataSO transition, LevelCompletionResults results) { _EventManager.OnLevelFail.Invoke(); };
             BSEvents.beatmapEvent += LightEventCallBack;
         }
@@ -32,8 +32,8 @@ namespace CustomFloorPlugin {
             BSEvents.comboDidBreak -= delegate () { _EventManager.OnComboBreak.Invoke(); };
             BSEvents.multiplierDidIncrease -= delegate (int multiplier) { _EventManager.MultiplierUp.Invoke(); };
             BSEvents.comboDidChange -= delegate (int combo) { _EventManager.OnComboChanged.Invoke(combo); };
-            BSEvents.sabersStartCollide -= delegate (Saber.SaberType saber) { _EventManager.SaberStartColliding.Invoke(); };
-            BSEvents.sabersEndCollide -= delegate (Saber.SaberType saber) { _EventManager.SaberStopColliding.Invoke(); };
+            BSEvents.sabersStartCollide -= delegate (SaberType saber) { _EventManager.SaberStartColliding.Invoke(); };
+            BSEvents.sabersEndCollide -= delegate (SaberType saber) { _EventManager.SaberStopColliding.Invoke(); };
             BSEvents.levelFailed -= delegate (StandardLevelScenesTransitionSetupDataSO transition, LevelCompletionResults results) { _EventManager.OnLevelFail.Invoke(); };
             BSEvents.beatmapEvent -= LightEventCallBack;
         }

@@ -30,7 +30,7 @@ namespace CustomFloorPlugin.UI {
             // dismiss ourselves
             Plugin.Log("Selected Environment:" + PlatformManager.currentPlatform.platName);
             var mainFlow = BeatSaberUI.MainFlowCoordinator;
-            mainFlow.InvokePrivateMethod("DismissFlowCoordinator", this, null, false);
+            mainFlow.DismissFlowCoordinator(this, null, false);
         }
     }
 }

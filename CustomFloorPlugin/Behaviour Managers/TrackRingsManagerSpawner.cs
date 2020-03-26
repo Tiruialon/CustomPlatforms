@@ -1,4 +1,5 @@
 using BS_Utils.Utilities;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -47,7 +48,7 @@ namespace CustomFloorPlugin {
                     ReflectionUtil.SetPrivateField(rotationEffect, "_trackLaneRingsManager", ringsManager);
                     ReflectionUtil.SetPrivateField(rotationEffect, "_startupRotationAngle", trackRingDesc.startupRotationAngle);
                     ReflectionUtil.SetPrivateField(rotationEffect, "_startupRotationStep", trackRingDesc.startupRotationStep);
-                    ReflectionUtil.SetPrivateField(rotationEffect, "_startupRotationPropagationSpeed", trackRingDesc.startupRotationPropagationSpeed);
+                    ReflectionUtil.SetPrivateField(rotationEffect, "_startupRotationPropagationSpeed", (int)Math.Round(trackRingDesc.startupRotationPropagationSpeed));
                     ReflectionUtil.SetPrivateField(rotationEffect, "_startupRotationFlexySpeed", trackRingDesc.startupRotationFlexySpeed);
 
                     TrackLaneRingsRotationEffectSpawner rotationEffectSpawner =
@@ -57,7 +58,7 @@ namespace CustomFloorPlugin {
                     ReflectionUtil.SetPrivateField(rotationEffectSpawner, "_beatmapObjectCallbackController", Plugin.bocc);
                     ReflectionUtil.SetPrivateField(rotationEffectSpawner, "_beatmapEventType", (BeatmapEventType)trackRingDesc.rotationSongEventType);
                     ReflectionUtil.SetPrivateField(rotationEffectSpawner, "_rotationStep", trackRingDesc.rotationStep);
-                    ReflectionUtil.SetPrivateField(rotationEffectSpawner, "_rotationPropagationSpeed", trackRingDesc.rotationPropagationSpeed);
+                    ReflectionUtil.SetPrivateField(rotationEffectSpawner, "_rotationPropagationSpeed", (int)Math.Round(trackRingDesc.rotationPropagationSpeed));
                     ReflectionUtil.SetPrivateField(rotationEffectSpawner, "_rotationFlexySpeed", trackRingDesc.rotationFlexySpeed);
                     ReflectionUtil.SetPrivateField(rotationEffectSpawner, "_trackLaneRingsRotationEffect", rotationEffect);
                 }

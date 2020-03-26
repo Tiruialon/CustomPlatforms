@@ -10,7 +10,8 @@ using UnityEngine.SceneManagement;
 using Level = IPA.Logging.Logger.Level;
 
 namespace CustomFloorPlugin {
-    internal class Plugin:IBeatSaberPlugin {
+    [Plugin(RuntimeOptions.SingleStartInit)]
+    internal class Plugin {
         internal static Config config;
         internal static GameScenesManager gsm = null;
         private static IPA.Logging.Logger logger;
@@ -34,10 +35,12 @@ namespace CustomFloorPlugin {
 
         public static Plugin Instance = null;
 
+        [Init]
         public void Init(IPA.Logging.Logger logger) {
             Plugin.logger = logger;
         }
 
+        [OnStart]
         public void OnApplicationStart() {
             Instance = this;
             BSEvents.OnLoad();

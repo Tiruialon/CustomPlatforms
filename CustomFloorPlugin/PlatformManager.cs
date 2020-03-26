@@ -1,5 +1,5 @@
 using CustomFloorPlugin.Exceptions;
-using Harmony;
+using HarmonyLib;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -120,7 +120,7 @@ namespace CustomFloorPlugin {
                 if(!GetCurrentEnvironment().name.StartsWith("Menu")) {
                     try {
                         FindManager();
-                        if(!Resources.FindObjectsOfTypeAll<PlayerDataModelSO>()[0].playerData.overrideEnvironmentSettings.overrideEnvironments) {
+                        if(!Resources.FindObjectsOfTypeAll<PlayerDataModel>()[0].playerData.overrideEnvironmentSettings.overrideEnvironments) {
                             InternalTempChangeToPlatform();
                             PlatformLoader.AddManagers();
                             SpawnCustomLights();

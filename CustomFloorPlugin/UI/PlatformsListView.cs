@@ -16,7 +16,7 @@ namespace CustomFloorPlugin.UI {
         private void PlatformSelect(TableView ignored1, int idx) {
             PlatformManager.Instance.SetPlatform(idx);
             try {
-                Resources.FindObjectsOfTypeAll<PlayerDataModelSO>()[0].playerData.overrideEnvironmentSettings.overrideEnvironments = false;
+                Resources.FindObjectsOfTypeAll<PlayerDataModel>()[0].playerData.overrideEnvironmentSettings.overrideEnvironments = false;
             } catch(Exception e) {
                 Plugin.Log(e);
             }
